@@ -69,7 +69,7 @@
                 "sections": 
 				[
 					{
-                       "section":"IBM® Cloudant® is a highly scalable JSON (JavaScript Object Notation) database service, which stores JSON formatted documents. This tutorial demonstrates how to develop and run a message flow that connects to IBM Cloudant and issues synchronous requests to retrieve information."
+                       "section":"IBM® Cloudant® is a highly scalable JSON (JavaScript Object Notation) database service, which stores JSON formatted documents. This tutorial demonstrates how to develop and run a message flow that connects to IBM Cloudant and issues synchronous requests to retrieve information.<ol><li>A list item</li><li>Another list item</li></ol>"
 					},                    
 					{
                        "section":"The tutorial provides a partially completed message flow and describes the development process step-by-step as follows:",
