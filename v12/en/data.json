@@ -75,7 +75,7 @@
                        "section":"1. Create a local integration server which has a vault for storing credentials"
 					},					
 					{
-                       "section":"     2. Launch the connector discovery process using a policy project which will be used to store an IBM Cloudant policy containing connection information."
+                       "section":"2. Launch the connector discovery process using a policy project which will be used to store an IBM Cloudant policy containing connection information."
 					},
 					{
                        "section":"3. Select the object and action which the IBM Cloudant Request node will execute"
@@ -90,7 +90,7 @@
                        "section":"6. Deploy and test the message flow, policy and credentials using the local integration server"
 					},
 					{
-                       "section":"For the convenience of more experienced users, the tutorial also provides a more complete version of the message flow, for which the connector discovery process has already been completed.  Instructions describe how to edit connection information in the policy, and for creating credentials to access your own instance of IBM Cloudant."
+                       "section":"For the convenience of more experienced users, the tutorial also provides a more complete version of the message flow, for which the connector discovery process has already been completed.  Instructions describe how to edit connection information in the policy, and how to create credentials to access your own instance of IBM Cloudant."
 					},					
                     {
                         "section": "This tutorial requires access to an IBM Cloudant system."
@@ -124,16 +124,16 @@
                     "sections": 
 					[
                         {
-                            "section": "When you click Import, one project will be created in your workspace: An application named <span class='application'>ApplicationFileExists</span>"
+                            "section": "When you click Import, three projects will be created in your workspace: An application named <span class='application'>ExampleCloudant</span>, an application named <span class='application'>CompleteExampleCloudant</span> and a policy project named <span class='application'>CompletePolicyProjectCloudant</span>"
                         },
                         {
-                            "section": "<span class='application'>ApplicationFileExists</span> provides a single message flow named <span class='application'>FlowFileExists</span> which uses a FileExists node to poll a directory and triggers the message flow when it notices that a file has arrived. The file itself is not parsed, but information about the file is propagated through the flow. Downstream nodes use the time when the file was last modified to determine whether or not to update an in-memory cache. The following descriptions summarize the functionality of each message flow node:"							
+                            "section": "The application <span class='application'>ExampleCloudant</span> provides a single message flow named <span class='application'>ExampleCloudantFlow</span> which includes an unconfigured IBM Cloudant Request node. This tutorial will guide you through the configuration of this node, but to save you time, the rest of the flow is ready to be used. The flow is driven from an HTTP Input node that receives a JSON trigger message. The content of the input message is not important - we are just using it here to kick-off the flow's activity rather than use any of the inbound data to drive detailed flow behaviour.  The message flow uses a FlowOrder node to execute two branches of logic in sequence. First in the flow sequence, an HTTP Reply node echoes back the input message to the initiating HTTP client (the tutorial will use the Toolkit's Flow Exerciser for this purpose, but you could use cURL or any other HTTP client if you prefer). Second in the flow sequence, the IBM Cloudant Request communicates with Cloudant and has its three output terminals (Failure, Out and NoData) wired to three separate Trace nodes to capture its results. The Trace nodes are configured to write to file outputs which are currently configured for the Windows platform (in directory C:\temp). If you intend to use a different platform, change the <code>File path</code> property now on each of the three Trace nodes. We will describe the configuration of the IBM Cloudant Request node in the Prepare section of the tutorial."
                         },
 						{ 
-                        	"section":"<span class='uicontrol'>HTTP Input</span>: An Input node that receives an input message across HTTP that contains a country code (an abbreviated country name)."
+                        	"section":"The application <span class='application'>CompleteExampleCloudant</span> is very similar to <span class='application'>ExampleCloudant</span> but its message flow, named  <span class='application'>ExampleCloudantFlow</span> (which exposes a different URL Fragment), has already had its IBM Cloudant Request node configured, and an associated policy has been generated. The policy includes information for controlling how to connect to your Cloudant instance, and also includes the name of the credential (which is stored in a vault) which should be used by the runtime when these artifacts are deployed to an integration server. This application will be used in the Run section of the tutorial to help demonstrate some administration concepts such as reusing discovered artifacts, editting policies and updating credentials"
                         },
                         { 
-                        	"section":"<span class='uicontrol'>TranslateCountryCode</span>: A Compute node that uses an ESQL shared variable as an in-memory cache providing a Lookup facility to retrieve the full country name, by using the abbreviated country code as a key."
+                        	"section":"The policy project <span class='uicontrol'>CompletePolicyProject</span>: A Compute node that uses an ESQL shared a  as an in-memory cache providing a Lookup facility to retrieve the full country name, by using the abbreviated country code as a key."
                         },
 						{ 
                         	"section":"<span class='uicontrol'>HTTP Reply</span>: A Reply node that returns a message across HTTP that contains the full country name, and to help you understand how the flow is operating, the time at which the cache was last updated."
