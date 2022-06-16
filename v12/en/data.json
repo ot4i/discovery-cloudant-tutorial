@@ -132,30 +132,6 @@
 						{ 
                         	"section":"The application <span class='application'>CompleteExampleCloudant</span> is very similar to <span class='application'>ExampleCloudant</span> but its message flow, named  <span class='application'>ExampleCloudantFlow</span> (which exposes a different URL Fragment), has already had its IBM Cloudant Request node configured, and an associated policy has been generated. The policy includes information for controlling how to connect to your Cloudant instance, and also includes the name of the credential (which is stored in a vault) which should be used by the runtime when these artifacts are deployed to an integration server. This application will be used in the Run section of the tutorial to help demonstrate some administration concepts such as reusing discovered artifacts, editting policies and updating credentials"
                         },
-                        { 
-                        	"section":"The policy project <span class='uicontrol'>CompletePolicyProject</span>: A Compute node that uses an ESQL shared a  as an in-memory cache providing a Lookup facility to retrieve the full country name, by using the abbreviated country code as a key."
-                        },
-						{ 
-                        	"section":"<span class='uicontrol'>HTTP Reply</span>: A Reply node that returns a message across HTTP that contains the full country name, and to help you understand how the flow is operating, the time at which the cache was last updated."
-                        },
-                        { 
-                        	"section":"<span class='uicontrol'>FileExists</span>: A FileExists node that triggers the flow when it notices that a file has been written to a directory which it is polling on a 20 second interval."
-                        },
-                        { 
-                        	"section":"<span class='uicontrol'>Update Cache?</span>: A Filter node that compares the time when the file was last modified to the time when the in-memory cache was last updated, and depending on the comparison, routes the data in different directions."
-                        },
-						{ 
-                        	"section":"<span class='uicontrol'>CacheNotUpdated</span>: A Trace node that records that the cache does not need updating."
-                        },
-						{ 
-                        	"section":"<span class='uicontrol'>File Read</span>: A File Read node that reads the file and parses it using a DFDL message model, ready to populate the in-memory cache."
-                        },
-						{ 
-                        	"section":"<span class='uicontrol'>Update Cache</span>: A Compute node that updates the shared variable in-memory cache with the content from the file."
-                        },
-						{ 
-                        	"section":"<span class='uicontrol'>CacheUpdated</span>: A Trace node that records that the cache has been updated."
-                        },
                         {
 			    			"section": "Once imported using the link on the right, the provided project is ready to be deployed and tested. The rest of these instructions will describe how to do this using the Toolkit's built-in Flow Exerciser."
 						}
@@ -221,15 +197,20 @@
 						}
 					},
 					{
-                       "section":"<b>Create a temporary directory and configure the message flow's trace nodes</b>",
+                       "section":"<b>Launch the Connector Discovery</b>",
 						  "steps":
                         {
                           "type": "ordered",
                           "details":
                           [
                              {
-                                 "details": "The message flow includes two trace nodes (named CacheUpdated and CacheNotUpdated) which are both currently configured to write a trace file named <code>C:\\temp\\TraceFileExists.txt</code>. Make sure this temporary directory exists, or update the message flow nodes' properties to point to a different file location."
-                                             }
+                                 "details": "Select the IBM Cloudant Request node and view its Properties in the window at the base of the screen. At this stage you will see an error stating that an action must be specified. Every Cloudant Request node (in fact, every Discovery Connector node) requires configuration to define what Action it should execute against what Object. Click the Launch Connector Discovery button."
+							 },
+							 {
+                                 "details": "The Launch Connector Discovery wizard will open. It requires three property values:<ul><li>Policy Project: Click the New button and create a policy project named ExamplePolicyProjectCloudant</li><li>Work directory: Click the Browse button and navigate to the TEST_SERVER directory in your Toolkit workspace. For example, this would be C:\workspace\TEST_SERVER if your Toolkit workspace were at C:\\workspace.</li><li>Vault Key: Type the same vault key which you used when creating your local integration server (named TEST_SERVER) earlier in the tutorial, for example password123</li></ul><br>The process of connecting to Cloudant and discovering information from it, will cause your Cloudant credentials to be saved in the vault, and your Cloudant connection information to be saved in a policy (in the policy project specified)."
+							}
+							
+                            
 						  ]
 						}
 					},
