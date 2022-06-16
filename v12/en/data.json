@@ -69,35 +69,25 @@
                 "sections": 
 				[
 					{
-                       "section":"IBM® Cloudant® is a highly scalable JSON (JavaScript Object Notation) database service, which stores JSON formatted documents. This tutorial demonstrates how to develop and run a message flow that connects to IBM Cloudant and issues synchronous requests to retrieve information.<ol><li>A list item</li><li>Another list item</li></ol>"
-					},                    
+                       "section":"IBM® Cloudant® is a highly scalable JSON (JavaScript Object Notation) database service, which stores JSON formatted documents. This tutorial demonstrates how to develop and run a message flow that connects to IBM Cloudant and issues synchronous requests to retrieve information. The tutorial provides a partially completed message flow and describes the development process step-by-step as follows:"
+					},
 					{
-                       "section":"The tutorial provides a partially completed message flow and describes the development process step-by-step as follows:",
-						  "steps":
-                        {
-                          "type": "ordered",
-                          "details":
-                          [
-                             {
-                                 "details": "Create a local integration server which has a vault for storing credentials"
-                             },
-                             {
-                                 "details": "Launch the connector discovery process using a policy project which will be used to store an IBM Cloudant policy containing connection information."
-                             },
-                             {
-                                 "details": "Select the object and action which the IBM Cloudant Request node will execute"
-                             },
-                             {
-                                 "details": "Select Filters which influence the way in which the message flow selects data"
-                             },			 
-                             {
-                                 "details": "Save the results of the connector discovery process"
-                             },
-                             {
-                                 "details": "Deploy and test the message flow, policy and credentials using the local integration server"
-                             }
-						  ]
-						}
+                       "section":"1. Create a local integration server which has a vault for storing credentials"
+					},					
+					{
+                       "section":"     2. Launch the connector discovery process using a policy project which will be used to store an IBM Cloudant policy containing connection information."
+					},
+					{
+                       "section":"3. Select the object and action which the IBM Cloudant Request node will execute"
+					},
+					{
+                       "section":"4. Select Filters which influence the way in which the message flow selects data"
+					},
+					{
+                       "section":"5. Save the results of the connector discovery process"
+					},
+					{
+                       "section":"6. Deploy and test the message flow, policy and credentials using the local integration server"
 					},
 					{
                        "section":"For the convenience of more experienced users, the tutorial also provides a more complete version of the message flow, for which the connector discovery process has already been completed.  Instructions describe how to edit connection information in the policy, and for creating credentials to access your own instance of IBM Cloudant."
