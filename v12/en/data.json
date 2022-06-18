@@ -126,6 +126,38 @@
                         {
                             "section": "When you click Import, three projects will be created in your workspace: An application named <span class='application'>ExampleCloudant</span>, an application named <span class='application'>CompleteExampleCloudant</span> and a policy project named <span class='application'>CompletePolicyProjectCloudant</span>"
                         },
+						{
+"section": "<h4>This is a title of size h4</h4>",
+"steps":
+  {
+    "type": "unordered",
+    "details": [
+      {
+        "details": "This is the first unordered list item"
+      },
+      {
+        "details": "This is the second unordered list item, which I will try to give sub-bullets",
+        "substeps": {
+          "type":"unordered",
+          "details": [
+            {
+              "details": "This should be the first sub-bullet"
+            },
+            {
+              "details": "This should be the second sub-bullet"
+            },
+            {
+              "details": "This should be the third sub-bullet"
+            }
+          ]
+		}
+	  },
+      {
+        "details": "This is the third unordered list item"
+      }
+    ]
+  }
+},
                         {
                             "section": "The application <span class='application'>ExampleCloudant</span> provides a single message flow named <span class='application'>ExampleCloudantFlow</span> which includes an unconfigured IBM Cloudant Request node. This tutorial will guide you through the configuration of this node, but to save you time, the rest of the flow is ready to be used. The flow is driven from an HTTP Input node that receives a JSON trigger message. The content of the input message is not important - we are just using it here to kick-off the flow's activity rather than use any of the inbound data to drive detailed flow behaviour.  The message flow uses a FlowOrder node to execute two branches of logic in sequence. First in the flow sequence, an HTTP Reply node echoes back the input message to the initiating HTTP client (the tutorial will use the Toolkit's Flow Exerciser for this purpose, but you could use cURL or any other HTTP client if you prefer). Second in the flow sequence, the IBM Cloudant Request communicates with Cloudant and has its three output terminals (Failure, Out and NoData) wired to three separate Trace nodes to capture its results. The Trace nodes are configured to write to file outputs which are currently configured for the Windows platform (in directory C:\\temp). If you intend to use a different platform, change the <code>File path</code> property now on each of the three Trace nodes. We will describe the configuration of the IBM Cloudant Request node in the Prepare section of the tutorial."
                         },
