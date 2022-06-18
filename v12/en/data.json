@@ -215,6 +215,38 @@
                     "heading": "The following steps help you to prepare your environment ready for running the message flow.",
                     "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
                     "sections": [
+						{
+"section": "<h4>This is a title of size h4</h4>",
+"steps":
+  {
+    "type": "unordered",
+    "details": [
+      {
+        "details": "This is the first unordered list item"
+      },
+      {
+        "details": "This is the second unordered list item, which I will try to give sub-bullets",
+        "substeps": {
+          "type":"unordered",
+          "details": [
+            {
+              "details": "This should be the first sub-bullet"
+            },
+            {
+              "details": "This should be the second sub-bullet"
+            },
+            {
+              "details": "This should be the third sub-bullet"
+            }
+          ]
+		}
+	  },
+      {
+        "details": "This is the third unordered list item"
+      }
+    ]
+  }
+},
 				    {
                        "section":"<b>Create an Integration Server</b>",
 						  "steps":
@@ -232,7 +264,7 @@
                        "section":"<b>Launch the Connector Discovery</b>",
 						  "steps":
                         {
-                          "type": "ordered",
+                          "type": "unordered",
                           "details":
                           [
                              {
@@ -277,8 +309,42 @@
                     "heading": "",
                     "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
                 "sections":[                            
-                            {
-                                "section": "<h4>Use the Flow Exerciser to test the tutorial scenario",
+{
+"section": "<h4>This is a title of size h4</h4>",
+"steps":
+  {
+    "type": "unordered",
+    "details": [
+      {
+        "details": "This is the first unordered list item"
+      },
+      {
+        "details": "This is the second unordered list item, which I will try to give sub-bullets",
+        "substeps": {
+          "type":"unordered",
+          "details": [
+            {
+              "details": "This should be the first sub-bullet"
+            },
+            {
+              "details": "This should be the second sub-bullet"
+            },
+            {
+              "details": "This should be the third sub-bullet"
+            }
+          ]
+		}
+	  },
+      {
+        "details": "This is the third unordered list item"
+      }
+    ]
+  }
+},
+					
+					{
+  
+								"section": "<h4>Use the Flow Exerciser to test the tutorial scenario",
                                 "steps": {
                                     "type": "ordered",
                                     "details": [                                      
