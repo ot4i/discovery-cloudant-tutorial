@@ -207,7 +207,7 @@
                                  "details": "When you imported the tutorial projects in the previous section, <span class='application'>ExampleCloudantFlow</span> in application <span class='application'>ExampleCloudant</span> will have been opened for you. First, check the properties of the three trace nodes in the messge flow, which are configured ready for deployment on a Windows system (their <code>File path</code> property is set to use the directory <code>C:\\temp</code>). If you are running on a different operating system, or if the file directory is not convenient for you, then feel free to change it. Next, select the IBM Cloudant Request node and view its Properties window at the base of the screen. At this stage you should see an error stating that an action must be specified. Every Cloudant Request node (in fact, every Discovery Connector node) requires configuration to define what action it should execute against what object in the endpoint system. You make these decisions using the Connector Discovery process. Click the Launch Connector Discovery button."
 							 },							 
 							{
-        "details": "The Launch Connector Discovery wizard will open. It requires three property values:",
+        "details": "The Launch Connector Discovery wizard will open. The process of connecting to Cloudant and discovering information from it, will cause your Cloudant credentials to be saved in the vault, and your Cloudant connection information to be saved in a policy. Fill out the three required property values shown below and then click the Launch Discovery button:",
         "substeps": {
           "type":"unordered",
           "details": [
@@ -215,7 +215,7 @@
               "details": "<code>Policy Project</code>: Click the New button and create a policy project named ExamplePolicyProjectCloudant"
             },
             {
-              "details": "Work directory: Click the Browse button and navigate to the TEST_SERVER directory in your Toolkit workspace. For example, this would be C:\\workspace\\TEST_SERVER if your Toolkit workspace were at C:\\workspace."
+              "details": "<strong>Work directory:</strong> Click the Browse button and navigate to the TEST_SERVER directory in your Toolkit workspace. For example, this would be C:\\workspace\\TEST_SERVER if your Toolkit workspace were at C:\\workspace."
             },
             {
               "details": "Vault Key: Type the same vault key which you used when creating your local integration server (named TEST_SERVER) earlier in the tutorial, for example password123"
@@ -223,12 +223,18 @@
           ]
 		}
 	  }, 
-							{
-                                 "details": "The process of connecting to Cloudant and discovering information from it, will cause your Cloudant credentials to be saved in the vault, and your Cloudant connection information to be saved in a policy (in the policy project specified). Click the Launch Discovery button."
-							},
                             {
-                                 "details": "A new Configure connector node window will open. If you had previously connected to a Cloudant system then a list of those connections would be displayed, but in this example the status of the IBM Cloudant connector is shown as <code>Not connected</code>. You will see a variety of combinations of different actions and objects available. In this tutorial, expand the <code>Documents</code> section and choose to <code>Retrieve documents</code>."
-							}							 
+                                 "details": "A new Configure connector node window will open. If you had previously connected to a Cloudant system then a list of those connections would be displayed, but in this example the status of the IBM Cloudant connector is shown as <code>Not connected</code>. Underneath this you will see a list of Cloudant objects (such as Attachments, Databases, Documents and Views) which can be expanded to see the actions which can be executed against these objects. In this tutorial, we will expand the <code>Documents</code> section and choose to <code>Retrieve documents</code>. The list of objects and actions will be replace with a Connect button. Click the Connect button."
+							},
+							{
+                                 "details": "The page will refresh and display Connect to Cloudant, and offer four optional fields for Cloudant username, Cloudant password, Cloudant host and Cloudant API Key. Type in the required details - the simplest combination would be to provide just the host and API Key. Click Connect."
+							},
+							{
+                                 "details": "Connecting to Cloudant may take a few seconds, and you should then see a Database field which provides an enumerated drop-down list of the databases  defined in your Cloudant service instance. Pick one from the list. Reduce the value for Maximum number of items to retrieve to 1, which should also cause the radio button to select the option to <code>Process 1 item from the collection</code>. This will ensure that the data returned from Cloudant is relatively small, for the purpose of a simple example."
+							},
+							{
+                                 "details": "At the top of the window click the Save button, and you should see a confirmation message briefly appear. Close the Configure connector window and return to the Toolkit. You will now find that the properties of the IBM Cloudant Request node in the message flow have been updated. Save the message flow.  Explore the properties of the IBM Cloudant Request node. The Basic properties will now display a short description of Retrieve documents, along with the Action (<code>RETRIEVEALL</code>) and the object (<code>document</code>). The database name will also be shown. On the Connection tab, the Policy will have been configured as <code>{ExamplePolicyProjectCloudant}:IBMCloudant1</code>. The Filter tab will show the Filter Limit which we just selected."
+							}
 						  ]
 						}
 					}
