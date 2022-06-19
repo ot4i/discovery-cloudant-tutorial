@@ -7,8 +7,18 @@
     <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/CompleteExampleCloudant/icons/full/obj16/CompleteExampleCloudantFlow.gif"/>
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/CompleteExampleCloudant/icons/full/obj30/CompleteExampleCloudantFlow.gif"/>
     <composition>
-      <nodes xmi:type="ComIbmApplicationConnectorRequest_cloudantdb.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="422,89" applicationConnectorType="cloudantdb">
+      <nodes xmi:type="ComIbmApplicationConnectorRequest_cloudantdb.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="422,89" applicationConnectorType="cloudantdb" action="RETRIEVEALL" businessObject="document" displayName="Retrieve documents" policyUrl="{CompletePolicyProjectCloudant}:IBMCloudant1">
+        <filter>
+          <filterElementObject type="where">
+            <filterElementArray type="and">
+              <connectorPropertyRef propertyName="db_name" compareAction=""/>
+              <filterProperty propertyName="_id" displayName="Document ID" propertyValue="[[$Root/JSON/Data/wobble]]" compareAction=""/>
+            </filterElementArray>
+          </filterElementObject>
+          <queryProperties limit="10" allowTruncation="true" paginationType="TOKEN"/>
+        </filter>
         <translation xmi:type="utility:ConstantString" string="IBM Cloudant Request"/>
+        <connectorProperty propertyName="db_name" displayName="Database" propertyValue="share_price"/>
       </nodes>
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="420,33">
         <translation xmi:type="utility:ConstantString" string="HTTP Reply"/>

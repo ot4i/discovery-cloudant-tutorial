@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "items": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "displayOrder": 2,
+        "title": "Document ID",
+        "display": {
+          "nameProperty": true
+        },
+        "type": "string"
+      },
+      "_rev": {
+        "displayOrder": 3,
+        "title": "Document revision",
+        "type": "string"
+      },
+      "data": {
+        "displayOrder": 4,
+        "title": "Document data",
+        "type": "object"
+      }
+    },
+    "title": "document"
+  },
+  "type": "array",
+  "title": "document"
+}

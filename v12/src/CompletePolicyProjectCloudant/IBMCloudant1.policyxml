@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policies>
+  <policy policyType="cloudantdb" policyName="IBMCloudant1" policyTemplate="">
+    <applicationType>online</applicationType>
+    <applicationVersion>v1</applicationVersion>
+    <authorizationMethod>BASIC</authorizationMethod>
+    <hostname>REPLACE_WITH_YOUR_CLOUDANT_HOST</hostname>
+    <credentialName>CompletePolicyProjectCloudant_IBMCloudant1</credentialName>
+  </policy>
+</policies>
