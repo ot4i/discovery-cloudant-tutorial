@@ -153,20 +153,14 @@
 					[
                         {
                             "title": "IBM Documentation link to ",
-                            "description": "Developing integration solutions from scratch",
-                            "link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/bi12002_.htm",
-							"type": "web"
-                        },
-						{
-                            "title": "IBM Documentation link to ",
-                            "description": "FileExists node",
-                            "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=nodes-fileexists-node",
+                            "description": "Using IBM Cloudant with IBM App Connect Enterprise",
+                            "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=applications-using-cloudant-app-connect-enterprise",
 							"type": "web"
                         },
                         {
                              "title": "IBM Documentation link to ",
-                             "description": "Long-lived variable",
-                             "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=overview-long-lived-variables",
+                             "description": "IBM Cloudant Request node",
+                             "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=nodes-cloudant-request-node",
                              "type": "web"
                         }
 						
@@ -192,38 +186,6 @@
                     "heading": "The following steps help you to prepare your environment ready for running the message flow.",
                     "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
                     "sections": [
-						{
-"section": "<h4>This is a title of size h4</h4>",
-"steps":
-  {
-    "type": "unordered",
-    "details": [
-      {
-        "details": "This is the first unordered list item"
-      },
-      {
-        "details": "This is the second unordered list item, which I will try to give sub-bullets",
-        "substeps": {
-          "type":"unordered",
-          "details": [
-            {
-              "details": "This should be the first sub-bullet"
-            },
-            {
-              "details": "This should be the second sub-bullet"
-            },
-            {
-              "details": "This should be the third sub-bullet"
-            }
-          ]
-		}
-	  },
-      {
-        "details": "This is the third unordered list item"
-      }
-    ]
-  }
-},
 				    {
                        "section":"<b>Create an Integration Server</b>",
 						  "steps":
@@ -232,16 +194,16 @@
                           "details":
                           [
                             {
-                                "details": "From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='uicontrol'>Create a local integration server</span>. Leave all the options with their default values and click Finish. The local Integration Server will be started, using a project in your Toolkit's workspace as the work directory. Click OK to dismiss the Success dialog. "
+                                "details": "From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='uicontrol'>Create a local integration server</span>. We will leave most of the options with their default values. Type in a value (at least 8 characters long) for the Vault Key property. The instructions later in the tutorial will assume a value of <code>password123</code>. Untick the check box at the bottom of the dialog which is labelled <code>Start Integration Server</code>. Click Finish. The local Integration Server will be created using a project in your Toolkit's workspace as its work directory. We deliberately don't want to start up the server until later in the tutorial because when the server process runs it will lock the vault from being used by other processes. Before running the server we want to use the Toolkit discovery process to be able to populate the vault with the credentials needed for communication with Cloudant.  Click OK to dismiss the Success dialog. "
                             }
 						  ]
 						}
 					},
 					{
-                       "section":"<b>Launch the Connector Discovery</b>",
+                       "section":"<b>Run the Connector Discovery process</b>",
 						  "steps":
                         {
-                          "type": "unordered",
+                          "type": "ordered",
                           "details":
                           [
                              {
