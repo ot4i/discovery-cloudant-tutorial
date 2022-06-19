@@ -136,7 +136,7 @@
                             "section": "<span class='application'>ExampleCloudant</span> contains a single message flow named <span class='application'>ExampleCloudantFlow</span>. To save you time, most of the message flow is ready for use, but the IBM Cloudant Request node has not yet been configured. This tutorial will guide you through the configuration of the node. The flow is driven by an HTTP input containing any well-formed JSON data, and uses a FlowOrder node to first acknowledge the input by echoing the same data back to the requesting client. Second in the flow sequence, the IBM Cloudant Request communicates with Cloudant. This node has its three output terminals (Failure, Out and NoData) wired to three separate Trace nodes to capture the results."
                         },
 						{ 
-                        	"section":"<span class='application'>CompleteExampleCloudant</span> is very similar to <span class='application'>ExampleCloudant</span> but the message flow which it contains, named  <span class='application'>ExampleCloudantFlow</span> (which exposes a different URL Fragment), has already had its IBM Cloudant Request node configured, and an associated policy with connection information has already been generated. If you wish to skip to the Run section of the tutorial, this application is used to demonstrate some administration concepts such as reusing discovered artifacts, editting policies and updating credentials."
+                        	"section":"<span class='application'>CompleteExampleCloudant</span> is very similar to <span class='application'>ExampleCloudant</span> but the message flow which it contains, named  <span class='application'>ExampleCloudantFlow</span> (which exposes a different URL Fragment), has already had its IBM Cloudant Request node configured, and an associated policy with connection information has already been generated. If you're already familiar with connector discovery, this application may be helpful to demonstrate some administration concepts such as reusing discovered artifacts, editting policies and updating credentials."
                         },
                         {
 			    			"section": "<span class='application'>CompletePolicyProjectCloudant</span> contains a single policy named <span class='application'>IBMCloudant1</span> which is used by the application <span class='application'>CompleteExampleCloudant</span>."							
@@ -191,7 +191,7 @@
                           "details":
                           [
                             {
-                                "details": "From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='uicontrol'>Create a local integration server</span>. We will leave most of the options with their default values. Type in a value (at least 8 characters long) for the Vault Key property. The instructions later in the tutorial will assume a value of <code>password123</code>. Untick the check box at the bottom of the dialog which is labelled <code>Start Integration Server</code>. Click Finish. The local Integration Server will be created using a project in your Toolkit's workspace as its work directory. We deliberately don't want to start up the server until later in the tutorial, because when the server process runs it will lock the vault from being used by other processes. Before running the server we want to use the Toolkit Connector Discovery process to populate the vault with the credentials needed for communication with Cloudant."
+                                "details": "From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='uicontrol'>Create a local integration server</span>. We will leave most of the options with their default values. Type in a value (at least 8 characters long) for the Vault Key property. The instructions later in the tutorial will assume a value of <code>password123</code>. Untick the check box at the bottom of the dialog which is labelled <code>Start Integration Server</code>. Click Finish. The local Integration Server will be created using a project in your Toolkit's workspace as its work directory. We deliberately don't want to start up the server until later in the tutorial, because when the server process runs it will lock the vault from being used by other processes. Before running the server we want to use the Toolkit Connector Discovery process to populate the vault with the credentials needed for communication with Cloudant. If you are already familiar with the Connector Discovery process you can now skip over the rest of the instructions in this Prepare section and move straight to the tutorial's Run section, Option 2."
                             }
 						  ]
 						}
@@ -212,13 +212,13 @@
           "type":"unordered",
           "details": [
             {
-              "details": "<code>Policy Project</code>: Click the New button and create a policy project named ExamplePolicyProjectCloudant"
+              "details": "<strong>Policy Project:</strong> Click the New button and create a policy project named <code>ExamplePolicyProjectCloudant</code>"
             },
             {
               "details": "<strong>Work directory:</strong> Click the Browse button and navigate to the TEST_SERVER directory in your Toolkit workspace. For example, this would be C:\\workspace\\TEST_SERVER if your Toolkit workspace were at C:\\workspace."
             },
             {
-              "details": "Vault Key: Type the same vault key which you used when creating your local integration server (named TEST_SERVER) earlier in the tutorial, for example password123"
+              "details": "<strong>Vault Key:</strong> Type the same vault key which you used when creating your local integration server (named TEST_SERVER) earlier in the tutorial, for example <code>password123</code>"
             }
           ]
 		}
@@ -233,7 +233,7 @@
                                  "details": "Connecting to Cloudant may take a few seconds, and you should then see a Database field which provides an enumerated drop-down list of the databases  defined in your Cloudant service instance. Pick one from the list. Reduce the value for Maximum number of items to retrieve to 1, which should also cause the radio button to select the option to <code>Process 1 item from the collection</code>. This will ensure that the data returned from Cloudant is relatively small, for the purpose of a simple example."
 							},
 							{
-                                 "details": "At the top of the window click the Save button, and you should see a confirmation message briefly appear. Close the Configure connector window and return to the Toolkit. You will now find that the properties of the IBM Cloudant Request node in the message flow have been updated. Save the message flow.  Explore the properties of the IBM Cloudant Request node. The Basic properties will now display a short description of Retrieve documents, along with the Action (<code>RETRIEVEALL</code>) and the object (<code>document</code>). The database name will also be shown. On the Connection tab, the Policy will have been configured as <code>{ExamplePolicyProjectCloudant}:IBMCloudant1</code>. The Filter tab will show the Filter Limit which we just selected."
+                                 "details": "At the top of the window click the Save button, and you should see a confirmation message briefly appear. Close the Configure connector window and return to the Toolkit. <strong>It is important to remember this step</strong> otherwise the vault will remain locked and you will be unable to start your integration server TEST_SERVER when you come to test the flow in the last section of the tutorial. You will now find that the properties of the IBM Cloudant Request node in the message flow have been updated. Save the message flow.  Explore the properties of the IBM Cloudant Request node. The Basic properties tab will now display a short description of <code>Retrieve documents</code>, along with the <strong>Action</strong> (<code>RETRIEVEALL</code>) and the <strong>object</strong> (<code>document</code>). The database name will also be shown. On the Connection properties tab, the <strong>Policy</strong> will have been configured as <code>{ExamplePolicyProjectCloudant}:IBMCloudant1</code>. The Filter properties tab will show the Filter Limit which we just selected."
 							}
 						  ]
 						}
@@ -252,76 +252,40 @@
                     "heading": "",
                     "_runComment": "The full steps for the user to run through the tutorial. Use 'sections' to render paragraphs, 'steps' with a type of 'ordered' or 'unordered' to render HTML lists, and 'substeps' to render nested lists.",
                 "sections":[                            
-{
-"section": "<h4>This is a title of size h4</h4>",
-"steps":
-  {
-    "type": "unordered",
-    "details": [
-      {
-        "details": "This is the first unordered list item"
-      },
-      {
-        "details": "This is the second unordered list item, which I will try to give sub-bullets",
-        "substeps": {
-          "type":"unordered",
-          "details": [
-            {
-              "details": "This should be the first sub-bullet"
-            },
-            {
-              "details": "This should be the second sub-bullet"
-            },
-            {
-              "details": "This should be the third sub-bullet"
-            }
-          ]
-		}
-	  },
-      {
-        "details": "This is the third unordered list item"
-      }
-    ]
-  }
-},
-					
-					{
-  
-								"section": "<h4>Use the Flow Exerciser to test the tutorial scenario",
+					           {  
+								"section": "<b>Option 1: Use the Flow Exerciser to test the tutorial scenario</b>",
                                 "steps": {
                                     "type": "ordered",
                                     "details": [                                      
-                                    {
-                                        "details": "Open <span class='resource'>FileExistsFlow.msgflow</span> and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow (if you have already deployed the flow you will be asked whether you want to redeploy it which should only be necessary if you have subsequently changed the flow since it was last deployed)."
+                                        {
+                                        "details": "In the Integration Explorer view of the Toolkit, right-click TEST_SERVER and select the option to Start."
+                                        },
+                                        {
+                                        "details": "Once the server has started, drag and drop deploy the policy project <span class='application'>ExamplePolicyProjectCloudant</span> in to TEST_SERVER."
+                                        },										
+										{
+                                        "details": "Return to <span class='resource'>ExampleCloudantFlow.msgflow</span> and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow."
                                         },
 										{
-                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />. One saved message is provided, named Input1, which can be used to invoke the HTTP Input node..."
-                                        },																				
-                                        {
-                                            "details": "The input message <span class='resource'>Input1</span> contains this data:<br><code>{<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CountryCode\": \"UK\"<br>}</code><br><br>Select this input message and click Send and your message is sent to the HTTPInput node. You will receive a JSON reply message structured like this:<br><code>{<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CountryCode\": \"UK\",<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CountryName\": \"Unknown\",<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CacheInfo\": \"Cache has not yet been initialised\"<br>}</code><br><br>After you close the dialog, the path taken through the message flow will be highlighted."
-										},
-										{										
-										  "details": "Copy the provided input file from <code>&lt;Integration Toolkit workspace&gt;/ApplicationFileExists/CountryCodes.txt</code> to the input directory that you created on your file system earlier. The file will be processed by the message flow to update its cache and will then be deleted. This may take a few seconds as the polling interval of the flow is set to 20 seconds."
-										},										                                        
-										{
-										 "details":"In the Flow Exerciser toolbar, click the View Path icon <img src='http://ot4i.github.io/iib-tutorials/images/icons/iib/viewPath.png' alt='View path' /> to highlight the message path through the message flow. You should now see a second path highlighted in the flow (FileExists > Update Cache? > File Read > Update Cache > CacheUpdated) demonstrating the actions of the FileExists node. The flow will have noticed that the in-memory cache had not previously been populated and will have used the content of the file you copied to populate the cache. The Trace node at the end of the flow named CacheUpdated should have created an entry in the trace file (file location discussed earlier in the Prepare section of this tutorial) with content similar to the following:<br><code>===== Trace at 2022-03-30 15:32:44.841308 =====<br>File Name = 'CountryCodes.txt'<br>File LastModified = GMTTIMESTAMP '2022-03-30 11:24:28'<br>Cache LastModified = GMTTIMESTAMP '2022-03-30 15:32:44.840285'<br>The flow has updated its cache, either because it has not previously been initialised, or because the FileExists node was triggered by a file whose LastModified timestamp was more recent than the time of the last cache update.<br></code>"											
-										},
-										{
-                                            "details": "Now that the cache has been populated we will re-test the bottom branch of the flow by clicking the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />. Using the same saved message, named Input1, we will repeat the earlier test but this time you should see a different reply message..."
-										},	
-										{
-                                            "details": "The input message <span class='resource'>Input1</span> contains this data:<br><code>{<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CountryCode\": \"UK\"<br>}</code><br><br>Select this input message and click Send and your message is sent to the HTTPInput node. You will receive a JSON reply message structured like this (but with a different timestamp):<br><code>{<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CountryCode\": \"UK\",<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CountryName\": \"United Kingdom\",<br>&nbsp;&nbsp;&nbsp;&nbsp;\"CacheInfo\": \"Cache was last updated at GMTTIMESTAMP '2022-03-30 15:32:44.840285'\"<br>}</code><br><br>After you close the dialog, the path taken through the messageflow will be highlighted."
-										},
-										{
-                                            "details": "You can now run a further test, demonstrating the last branch of the message flow. Repeat the copy of the provided input file from <code>&lt;Integration Toolkit workspace&gt;/ApplicationFileExists/CountryCodes.txt</code> to the input directory that you created on your file system earlier. This time, the cache won't need initialising and will have already been updated more recently than the Last Modified timestamp of the file, so after the flow propagates to the trace node named CacheNotUpdated, the last action of the flow will be to delete the file. If you check back in the trace file, you should see a slightly different trace message has been appended by the node CacheNotUpdated:<br><code>===== Trace at 2022-03-30 15:36:44.946730 =====<br>File Name = 'CountryCodes.txt'<br>File LastModified = GMTTIMESTAMP '2022-03-30 11:24:28'<br>There is nothing further for the flow to do at this time, because the FileExists node was triggered by a file whose LastModified timestamp was earlier than the latest cache update time.<br></code>"
-										},
-										{
-										 "details": "If you make an edit to the CountryCodes.txt file (for example, add a new country to the list) and resave the file so that it has been recently modified (after the last update to the cache), then you should be able to copy it to the input directory for the FileExists node and the flow will update its cache again."
-										}										
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />. Create a new test message to invoke the HTTP Input node. Any well-formed JSON will be fine, even something as simple as <code>{&quot;hello&quot;:&quot;world&quot;}</code>. Click Send and your message is sent to the HTTPInput node. You will receive a JSON reply message which is simply an echo of the same data which you sent in. You may also see a highlighted path through the flow. Sometimes there may be a short pause before the data is returned from Cloudant, so you may need to click the View Path icon <img src='http://ot4i.github.io/iib-tutorials/images/icons/iib/viewPath.png' alt='View path' /> in the Flow Exerciser toolbar in order to see the highlighted path carry on past the IBM Cloudant Request node and into a Trace node at the end of the message flow. Click on the highlighted path coming out of the IBM Cloudant Request node to see the data which has been retrieved from the database. The structure of this JSON message will depend on the structure of the first document found in your selected database."
+										}
                                         ]
                                     }
-                            }
-
+                            },							   
+							{
+								"section": "<b>Option 2: Using the alternative provided application named CompleteExampleCloudant to test the tutorial scenario</b>",
+                                "steps": {
+                                    "type": "ordered",
+                                    "details": [                                      
+                                        {
+                                        "details": "In the Integration Explorer view of the Toolkit, right-click <code>TEST_SERVER</code> and select the option to Start."
+                                        },
+                                        {
+                                        "details": "Once the server has started, drag and drop deploy the policy project <span class='application'>ExamplePolicyProjectCloudant</span> in to <code>TEST_SERVER</code>."
+                                        }
+									]
+								}
+							}
                     ]
                 },
                 "helpLinks": 
@@ -330,12 +294,12 @@
                     "details": 
 					[
                         {
-                            "title": "IBM Documentation link to ",
-                            "description": "FileExists node",
-                            "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=nodes-fileexists-node",
-							"type": "web"
+                             "title": "IBM Documentation link to ",
+                             "description": "IBM Cloudant Request node",
+                             "link": "https://www.ibm.com/docs/en/app-connect/12.0?topic=nodes-cloudant-request-node",
+                             "type": "web"
                         },
-                        {
+						{
                             "title": "IBM Documentation link to ",
                             "description": "Testing your message flow by using the Flow exerciser",
                             "link": "https://www.ibm.com/docs/SSTTDS_12.0/com.ibm.etools.mft.doc/rt26110_.htm",
