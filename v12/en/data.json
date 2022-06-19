@@ -227,7 +227,7 @@
                                  "details": "A new Configure connector node window will open. If you had previously connected to a Cloudant system then a list of those connections would be displayed, but in this example the status of the IBM Cloudant connector is shown as <code>Not connected</code>. Underneath this you will see a list of Cloudant objects (such as Attachments, Databases, Documents and Views) which can be expanded to see the actions which can be executed against these objects. In this tutorial, we will expand the <code>Documents</code> section and choose to <code>Retrieve documents</code>. The list of objects and actions will be replace with a Connect button. Click the Connect button."
 							},
 							{
-                                 "details": "The page will refresh and display Connect to Cloudant, and offer four optional fields for Cloudant username, Cloudant password, Cloudant host and Cloudant API Key. Type in the required details - the simplest combination would be to provide just the host and API Key. Click Connect."
+                                 "details": "The page will refresh and display Connect to Cloudant, and offer four optional fields for <strong>Cloudant username</strong>, <strong>Cloudant password</strong>, <strong>Cloudant host</strong> and <strong>Cloudant API Key</strong>. Type in the required details - the simplest combination would be to provide just the <strong>Cloudant host</strong> and <strong>Cloudant API Key</strong>. Click Connect."
 							},
 							{
                                  "details": "Connecting to Cloudant may take a few seconds, and you should then see a Database field which provides an enumerated drop-down list of the databases  defined in your Cloudant service instance. Pick one from the list. Reduce the value for Maximum number of items to retrieve to 1, which should also cause the radio button to select the option to <code>Process 1 item from the collection</code>. This will ensure that the data returned from Cloudant is relatively small, for the purpose of a simple example."
@@ -278,11 +278,20 @@
                                     "type": "ordered",
                                     "details": [                                      
                                         {
-                                        "details": "In the Integration Explorer view of the Toolkit, right-click <code>TEST_SERVER</code> and select the option to Start."
+											"details": "In order to reuse the completed application which is provided with this tutorial, you must configure your integration server with credentials for communicating with your Cloudant service instance.  Launch a command console session, and run the following command to create these credentials:<br><code>mqsicreatecredentials --work-dir &lt;YourToolkitWorkspace&gt;\\TEST_SERVER  --vault-key password123 --create --credential-type cloudantdb --credential-name CompletePolicyProjectCloudant_IBMCloudant1 --api-key &lt;YourCloudantAPIKey&gt;</code>"
+										},
+										{	
+                                        "details": "Back in the Toolkit, in the Integration Explorer view, right-click <code>TEST_SERVER</code> and select the option to Start."
                                         },
                                         {
-                                        "details": "Once the server has started, drag and drop deploy the policy project <span class='application'>ExamplePolicyProjectCloudant</span> in to <code>TEST_SERVER</code>."
-                                        }
+                                        "details": "Locate the policy named <span class='application'>IBMCloudant1.policyxml</span> inside the policy project named <span class='application'>CompletePolicyProjectCloudant</span>, right-click the policy and select the option to Open With > Policy Editor. You will find the <strong>Cloudant host</strong> property is currently configured with the value <code>REPLACE_WITH_YOUR_CLOUDANT_HOST</code>. As the name suggests, replace this value with the host name of your Cloudant service instance, and save the policy.  Drag and drop deploy the policy project <span class='application'>CompletePolicyProjectCloudant</span> to <code>TEST_SERVER</code>."
+                                        },
+										{
+                                        "details": "Return to <span class='resource'>CompleteExampleCloudantFlow.msgflow</span> and click the Flow Exerciser icon <img src='http://ot4i.github.io/ot4i.tutorials//dist/images/icons/iib/startFlowExerciser.png' alt='' /> to start testing the flow."
+                                        },
+										{
+                                            "details": "Click the Send Message icon <img src='http://ot4i.github.io/ot4i.tutorials/dist/images/icons/iib/sendMessage.png' alt='' />. Create a new test message to invoke the HTTP Input node. Any well-formed JSON will be fine, even something as simple as <code>{&quot;hello&quot;:&quot;world&quot;}</code>. Click Send and your message is sent to the HTTPInput node. You will receive a JSON reply message which is simply an echo of the same data which you sent in. You may also see a highlighted path through the flow. Sometimes there may be a short pause before the data is returned from Cloudant, so you may need to click the View Path icon <img src='http://ot4i.github.io/iib-tutorials/images/icons/iib/viewPath.png' alt='View path' /> in the Flow Exerciser toolbar in order to see the highlighted path carry on past the IBM Cloudant Request node and into a Trace node at the end of the message flow. Click on the highlighted path coming out of the IBM Cloudant Request node to see the data which has been retrieved from the database. The structure of this JSON message will depend on the structure of the first document found in your selected database."
+										}
 									]
 								}
 							}
