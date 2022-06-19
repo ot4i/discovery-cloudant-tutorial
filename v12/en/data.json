@@ -69,7 +69,7 @@
                 "sections": 
 				[
 					{
-                       "section":"IBM® Cloudant® is a highly scalable JSON (JavaScript Object Notation) database service, which stores JSON formatted documents. This tutorial demonstrates how to develop and run a message flow that connects to IBM Cloudant and issues synchronous requests to retrieve information. The tutorial provides a partially completed message flow and describes the development process step-by-step as follows:"
+                       "section":"IBM® Cloudant® is a highly scalable JSON (JavaScript Object Notation) database service, which stores JSON formatted documents. This tutorial demonstrates how to develop and run a message flow that connects to IBM Cloudant and issues synchronous requests to retrieve information. This tutorial requires access to an IBM Cloudant system. The tutorial provides a partially completed message flow and detailed steps describing the development process step-by-step. A summary of what you will do is provided here:"
 					},
 					{
                        "section":"1. Create a local integration server which has a vault for storing credentials"
@@ -91,10 +91,7 @@
 					},
 					{
                        "section":"For the convenience of more experienced users, the tutorial also provides a more complete version of the message flow, for which the connector discovery process has already been completed.  Instructions describe how to edit connection information in the policy, and how to create credentials to access your own instance of IBM Cloudant."
-					},					
-                    {
-                        "section": "This tutorial requires access to an IBM Cloudant system."
-                    }
+					}
                 ]
             },
 			"helpLinks": 
@@ -127,13 +124,13 @@
                             "section": "When you click Import, three projects will be imported into your workspace:"
                         },
 						{
-                            "section": "An application named <span class='application'>ExampleCloudant</span>"
+                            "section": "1. An application named <span class='application'>ExampleCloudant</span>"
                         },
 						{
-                            "section": "An application named <span class='application'>CompleteExampleCloudant</span>"
+                            "section": "2. An application named <span class='application'>CompleteExampleCloudant</span>"
                         },
 						{
-                            "section": "A policy project named <span class='application'>CompletePolicyProjectCloudant</span>"
+                            "section": "3. A policy project named <span class='application'>CompletePolicyProjectCloudant</span>"
                         },
 						{
                             "section": "<span class='application'>ExampleCloudant</span> contains a single message flow named <span class='application'>ExampleCloudantFlow</span>. To save you time, most of the message flow is ready for use, but the IBM Cloudant Request node has not yet been configured. This tutorial will guide you through the configuration of the node. The flow is driven by an HTTP input containing any well-formed JSON data, and uses a FlowOrder node to first acknowledge the input by echoing the same data back to the requesting client. Second in the flow sequence, the IBM Cloudant Request communicates with Cloudant. This node has its three output terminals (Failure, Out and NoData) wired to three separate Trace nodes to capture the results."
@@ -183,18 +180,18 @@
                 "overview": 
 				{
                     "name": "Prepare",
-                    "heading": "The following steps help you to prepare your environment ready for running the message flow.",
+                    "heading": "This section describes how to complete the message flow configuration using the Connector Discovery process",
                     "_prepareComment": "A description of what just happened when the user clicked Import, and what will happen when the user clicks Deploy.",
                     "sections": [
 				    {
-                       "section":"<b>Create an Integration Server</b>",
+                       "section":"<b>Create an Integration Server with a credential vault</b>",
 						  "steps":
                         {
                           "type": "ordered",
                           "details":
                           [
                             {
-                                "details": "From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='uicontrol'>Create a local integration server</span>. We will leave most of the options with their default values. Type in a value (at least 8 characters long) for the Vault Key property. The instructions later in the tutorial will assume a value of <code>password123</code>. Untick the check box at the bottom of the dialog which is labelled <code>Start Integration Server</code>. Click Finish. The local Integration Server will be created using a project in your Toolkit's workspace as its work directory. We deliberately don't want to start up the server until later in the tutorial because when the server process runs it will lock the vault from being used by other processes. Before running the server we want to use the Toolkit discovery process to be able to populate the vault with the credentials needed for communication with Cloudant.  Click OK to dismiss the Success dialog. "
+                                "details": "From the Integration Explorer view in the bottom left corner of the Toolkit, right-click the Integration Servers folder and select the option to <span class='uicontrol'>Create a local integration server</span>. We will leave most of the options with their default values. Type in a value (at least 8 characters long) for the Vault Key property. The instructions later in the tutorial will assume a value of <code>password123</code>. Untick the check box at the bottom of the dialog which is labelled <code>Start Integration Server</code>. Click Finish. The local Integration Server will be created using a project in your Toolkit's workspace as its work directory. We deliberately don't want to start up the server until later in the tutorial, because when the server process runs it will lock the vault from being used by other processes. Before running the server we want to use the Toolkit Connector Discovery process to populate the vault with the credentials needed for communication with Cloudant."
                             }
 						  ]
 						}
@@ -207,33 +204,34 @@
                           "details":
                           [
                              {
-                                 "details": "Select the IBM Cloudant Request node and view its Properties in the window at the base of the screen. At this stage you will see an error stating that an action must be specified. Every Cloudant Request node (in fact, every Discovery Connector node) requires configuration to define what Action it should execute against what Object. Click the Launch Connector Discovery button."
-							 },
-							 {
-                                 "details": "The Launch Connector Discovery wizard will open. It requires three property values:<ul><li>Policy Project: Click the New button and create a policy project named ExamplePolicyProjectCloudant</li><li>Work directory: Click the Browse button and navigate to the TEST_SERVER directory in your Toolkit workspace. For example, this would be C:\\workspace\\TEST_SERVER if your Toolkit workspace were at C:\\workspace.</li><li>Vault Key: Type the same vault key which you used when creating your local integration server (named TEST_SERVER) earlier in the tutorial, for example password123</li></ul><br>The process of connecting to Cloudant and discovering information from it, will cause your Cloudant credentials to be saved in the vault, and your Cloudant connection information to be saved in a policy (in the policy project specified)."
-							}
+                                 "details": "When you imported the tutorial projects in the previous section, <span class='application'>ExampleCloudantFlow</span> in application <span class='application'>ExampleCloudant</span> will have been opened for you. First, check the properties of the three trace nodes in the messge flow, which are configured ready for deployment on a Windows system (their <code>File path</code> property is set to use the directory <code>C:\\temp</code>). If you are running on a different operating system, or if the file directory is not convenient for you, then feel free to change it. Next, select the IBM Cloudant Request node and view its Properties window at the base of the screen. At this stage you should see an error stating that an action must be specified. Every Cloudant Request node (in fact, every Discovery Connector node) requires configuration to define what action it should execute against what object in the endpoint system. You make these decisions using the Connector Discovery process. Click the Launch Connector Discovery button."
+							 },							 
+							{
+        "details": "The Launch Connector Discovery wizard will open. It requires three property values:",
+        "substeps": {
+          "type":"unordered",
+          "details": [
+            {
+              "details": "<code>Policy Project</code>: Click the New button and create a policy project named ExamplePolicyProjectCloudant"
+            },
+            {
+              "details": "Work directory: Click the Browse button and navigate to the TEST_SERVER directory in your Toolkit workspace. For example, this would be C:\\workspace\\TEST_SERVER if your Toolkit workspace were at C:\\workspace."
+            },
+            {
+              "details": "Vault Key: Type the same vault key which you used when creating your local integration server (named TEST_SERVER) earlier in the tutorial, for example password123"
+            }
+          ]
+		}
+	  }, 
+							{
+                                 "details": "The process of connecting to Cloudant and discovering information from it, will cause your Cloudant credentials to be saved in the vault, and your Cloudant connection information to be saved in a policy (in the policy project specified). Click the Launch Discovery button."
+							},
+                            {
+                                 "details": "A new Configure connector node window will open. If you had previously connected to a Cloudant system then a list of those connections would be displayed, but in this example the status of the IBM Cloudant connector is shown as <code>Not connected</code>. You will see a variety of combinations of different actions and objects available. In this tutorial, expand the <code>Documents</code> section and choose to <code>Retrieve documents</code>."
+							}							 
 						  ]
 						}
-					},
-					{
-                       "section":"<b>Create the directory which the FileExists node will poll</b>",
-						  "steps":
-                        {
-                          "type": "ordered",
-                          "details":
-                          [
-                             {
-                                 "details": "On Windows: Create the directory <code>C:\\temp\\FileExistsDemo</code>."
-                                             },
-                                             {
-                                 "details": "On Linux: Create a suitable directory such as <code>/tmp/FileExistsDemo</code> and change the Input directory property of the FileExists node accordingly to point to the same directory."
-                                             }
-						  ]
-						}
-					},	
-					{
-                            "section": "Next you will use the Flow exerciser to send HTTP requests to the message flow."
-                    }
+					}
              ]
                 },
                 "helpLinks": 
