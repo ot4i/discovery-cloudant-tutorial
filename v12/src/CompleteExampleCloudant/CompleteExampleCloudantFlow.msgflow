@@ -12,10 +12,9 @@
           <filterElementObject type="where">
             <filterElementArray type="and">
               <connectorPropertyRef propertyName="db_name" compareAction=""/>
-              <filterProperty propertyName="_id" displayName="Document ID" propertyValue="[[$Root/JSON/Data/wobble]]" compareAction=""/>
             </filterElementArray>
           </filterElementObject>
-          <queryProperties limit="10" allowTruncation="true" paginationType="TOKEN"/>
+          <queryProperties limit="1" allowTruncation="true" paginationType="TOKEN"/>
         </filter>
         <translation xmi:type="utility:ConstantString" string="IBM Cloudant Request"/>
         <connectorProperty propertyName="db_name" displayName="Database" propertyValue="share_price"/>
